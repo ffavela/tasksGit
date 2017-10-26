@@ -16,6 +16,8 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
     fGun = new G4ParticleGun();
 
     // Task 2a.1: Set the basic properties for the particles to be produced
+    // fGun->Set...
+ 
     // Task 2b.1: Set the same properties for the GPS (removing previous lines)
     // Task 2b.2: You can remove or keep the previous lines in the later stages
 }

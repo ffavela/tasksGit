@@ -29,7 +29,7 @@ void PhysicsList::SetCuts()
   // the default SetCuts() provided by the base class.
   G4VUserPhysicsList::SetCuts();
   
-  // Task 3c.1: Temporarily update the production cuts table energy range
+    // Task 3c.1: Temporarily update the production cuts table energy range
   
   // In addition, dump the full list of cuts for the materials used in 
   // the setup
