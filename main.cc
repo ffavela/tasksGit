@@ -94,7 +94,7 @@ int main(int argc, char** argv)
 
     G4UImanager* UImanager = G4UImanager::GetUIpointer();
 
-    // Task b.1: You need to access the scoring manager here (or above)
+    // Task 4b.1: You need to access the scoring manager here (or above)
 
     for (auto macro : macros)
     {
@@ -102,21 +102,21 @@ int main(int argc, char** argv)
         UImanager->ApplyCommand(command + macro);
     }
 
-    #ifdef G4UI_USE
-        if (interactive)
-        {
-            if (ui->IsGUI()) 
-            { 
-                UImanager->ApplyCommand("/control/execute macros/ui.mac"); 
-            } 
-            else 
-            { 
-                UImanager->ApplyCommand("/run/initialize"); 
-            }
-            ui->SessionStart();
-            delete ui;
-        }
-    #endif
+#ifdef G4UI_USE
+    if (interactive)
+      {
+          if (ui->IsGUI()) 
+          { 
+              UImanager->ApplyCommand("/control/execute macros/ui.mac"); 
+          } 
+          else 
+          { 
+              UImanager->ApplyCommand("/run/initialize"); 
+          } 
+    	  ui->SessionStart();
+    	  delete ui;
+      }
+#endif
 
     delete runManager;
     

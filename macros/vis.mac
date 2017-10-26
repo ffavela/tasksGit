@@ -12,6 +12,6 @@
 /vis/viewer/zoom 20
 /vis/scene/add/text 0 0 0 mm 12 5 5 Origin of particles
 
-/gun/particle proton
-/gun/energy 300 MeV
+# /gun/particle proton
+# /gun/energy 300 MeV
 /run/beamOn 10

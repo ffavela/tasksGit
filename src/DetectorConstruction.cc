@@ -141,10 +141,10 @@ void DetectorConstruction::ConstructDemo(G4LogicalVolume* worldLog)
 
     // By default, all volumes are hidden. For the to be displayed in visualization,
     // you have to assign visual attributes to them:
-    G4VisAttributes* blue = new G4VisAttributes(G4Colour(1.0, 0.0, 1.0, 0.4));
-    blue->SetVisibility(true);
-    blue->SetForceSolid(true);
-    smallLog->SetVisAttributes(blue);
+    G4VisAttributes* yellow = new G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.8));
+    yellow->SetVisibility(true);
+    yellow->SetForceSolid(true);
+    smallLog->SetVisAttributes(yellow);
 
     // And now just place the logical volume in many copies in a nested loop:
     int i = 0;
@@ -155,8 +155,8 @@ void DetectorConstruction::ConstructDemo(G4LogicalVolume* worldLog)
         {
             if (chr == ' ')
             {
-                G4ThreeVector pos {0, ((labelData.size() - 1) / 2.0 - i) * step,
-		    (j - (line.size() - 1) / 2.0) * step};
+                G4ThreeVector pos {0, ((labelData.size() - 1) / 2.0 - i) *
+		    step, (j - (line.size() - 1) / 2.0) * step};
                 new G4PVPlacement(nullptr, pos, smallLog, "small", labelLog, false, 0);
             }
             j++;
@@ -201,3 +201,4 @@ void DetectorConstruction::ConstructSDandField()
     //  to the SDmanager
     // EnergyTimeSD* absorberET = ...
 }
+
