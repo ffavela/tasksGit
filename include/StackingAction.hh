@@ -10,7 +10,7 @@ class StackingAction : public G4UserStackingAction
 {
 public:
   //! constructor
-  StackingAction(RunAction* );
+  StackingAction(RunAction* const );
 
   //! destructor
   ~StackingAction(){;};

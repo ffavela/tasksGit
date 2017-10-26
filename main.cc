@@ -28,6 +28,7 @@
 #include "PhysicsList.hh"
 
 // Task 3b.4: Include (temporarily if you want) header for QGSP
+// #include <QGSP.hh>
 
 // Task 4b.1: Include the proper header to enable scoring manager
 
@@ -78,6 +79,7 @@ int main(int argc, char** argv)
     #endif
 
     // Task 3b.4: Replace (only temporarily) PhysicsList with QGSP
+    // runManager->SetUserInitialization(new QGSP());
     runManager->SetUserInitialization(new PhysicsList());
 
     // Task 1: See that we instantiate the detector construction here
@@ -102,25 +104,26 @@ int main(int argc, char** argv)
         UImanager->ApplyCommand(command + macro);
     }
 
-#ifdef G4UI_USE
-    if (interactive)
-      {
-          if (ui->IsGUI()) 
-          { 
-              UImanager->ApplyCommand("/control/execute macros/ui.mac"); 
-          } 
-          else 
-          { 
-              UImanager->ApplyCommand("/run/initialize"); 
-          } 
-    	  ui->SessionStart();
-    	  delete ui;
-      }
-#endif
+    #ifdef G4UI_USE
+        if (interactive)
+        {
+            if (ui->IsGUI()) 
+            { 
+                UImanager->ApplyCommand("/control/execute macros/ui.mac"); 
+            } 
+            else 
+            { 
+                UImanager->ApplyCommand("/run/initialize"); 
+            } 
+            ui->SessionStart();
+            delete ui;
+        }
+    #endif
 
     delete runManager;
     
-    // Task 4c.3: Close the analysis output by uncommmenting the following lines
+    // Task 4c.3: Close the analysis output by uncommmenting the 
+    //  following lines
     // G4AnalysisManager* man = G4AnalysisManager::Instance();
     // man->CloseFile();
 

@@ -17,7 +17,7 @@ public:
     // You will edit this method in Tasks 1a & 1b
     G4VPhysicalVolume* Construct() override;
 
-    // Task 1c.1: Uncomment the declaration of this method
+    // Task 1c.1: Uncomment the declaration of this method (also necessary for 4.c and 4.d)
     void ConstructSDandField() override;
 
 private:

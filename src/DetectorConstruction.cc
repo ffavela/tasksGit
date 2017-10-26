@@ -155,8 +155,8 @@ void DetectorConstruction::ConstructDemo(G4LogicalVolume* worldLog)
         {
             if (chr == ' ')
             {
-                G4ThreeVector pos {0, ((labelData.size() - 1) / 2.0 - i) *
-		    step, (j - (line.size() - 1) / 2.0) * step};
+                G4ThreeVector pos {0, ((labelData.size() - 1) / 2.0 - i) * step,
+		    (j - (line.size() - 1) / 2.0) * step};
                 new G4PVPlacement(nullptr, pos, smallLog, "small", labelLog, false, 0);
             }
             j++;
@@ -201,4 +201,3 @@ void DetectorConstruction::ConstructSDandField()
     //  to the SDmanager
     // EnergyTimeSD* absorberET = ...
 }
-

@@ -21,7 +21,7 @@ RunAction::RunAction() :
   accumulableManager->RegisterAccumulable(fAverageGammaEnergy);
   accumulableManager->RegisterAccumulable(fAverageElectronEnergy);
   accumulableManager->RegisterAccumulable(fTotalTrackLength);
-  
+
   // Task 4c.3: Uncomment the following 4 lines to enable analysis.
   /* G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
   analysisManager->SetVerboseLevel(1);
@@ -30,13 +30,15 @@ RunAction::RunAction() :
 
   // Create histogram to be used in 4c
   // Task 4c.3: Create histogram with 20 bins, with limits of 50 and 60 cm
-  // (i.e. each bin will correspond to one layer of the callorimeter)
+  // (i.e. each bin will correspond to one layer of the calorimeter)
+  // NOTICE: the unit of measurement should go in the FillH1(), not in the 
+  //  CreateH1()
 
   // Task 4d.3: Create ntuple containing 5 double fields:
   //   EnergyDeposit, Time, X, Y & Z
 
   // Task 4c.3: Open file task (extension will be added automatically)
-  // analysisManager->OpenFile("task4");  
+  // analysisManager->OpenFile("task4");
 }
 
 
@@ -76,7 +78,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
 	     << fAverageElectronEnergy.GetValue()/keV/fNElectrons.GetValue() << " keV" << G4endl;
     else
       G4cout << " * No secondary electrons produced" << G4endl;
-    if (fTotalTrackLength.GetValue())
+     if (fTotalTrackLength.GetValue())
      {
         G4cout << " * Total track length of electrons in 1st absorber: ";
         G4cout << fTotalTrackLength.GetValue() / mm << " mm" << G4endl;
@@ -94,9 +96,10 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
 RunAction::~RunAction()
 {
-    // Task 4c.3: Uncomment the following 2 lines to enable analysis.
-    /* G4AnalysisManager* man = G4AnalysisManager::Instance();
-    man->Write(); */
+  // Task 4c.3: Write the analysis objects by uncommmenting the 
+  // following lines. 
+  // G4AnalysisManager* man = G4AnalysisManager::Instance();
+  // man->Write();
 }
 
 void RunAction::AddSecondary(const G4ParticleDefinition* particle,
@@ -111,7 +114,7 @@ void RunAction::AddSecondary(const G4ParticleDefinition* particle,
     {
       fNElectrons += 1;
       fAverageElectronEnergy += energy;
-    } 
+    }
   return;
 }
 
